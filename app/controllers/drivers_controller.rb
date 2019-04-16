@@ -34,4 +34,10 @@ class DriversController < ApplicationController
       render :edit
     end
   end
+
+  private
+
+  def driver_info
+    return params.require(:driver).permit(:name, :vin)
+  end
 end
