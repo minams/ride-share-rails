@@ -1,5 +1,6 @@
 class Driver < ApplicationRecord
   has_many :trips, dependent: :destroy
+  validates_associated :trips
   validates :name, :vin, presence: true
 
   def money_earned
