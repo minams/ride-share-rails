@@ -1,0 +1,14 @@
+<h2>
+  <%= @passenger.name %>
+</h2>
+
+<h3>
+  <%= @passenger.name %>
+</h3>
+
+<%# <%= link_to "Back to All Books", books_path %>
+
+<%= link_to "Edit", edit_passenger_path(@passenger.id) %>
+
+<%= link_to "Delete", 
+    passenger_path(@passenger.id), method: :delete %>
