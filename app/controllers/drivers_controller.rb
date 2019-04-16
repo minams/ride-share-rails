@@ -4,5 +4,6 @@ class DriversController < ApplicationController
   end
 
   def show
+    @driver = Driver.find_by(:id)
   end
 end
