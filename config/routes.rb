@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "homepages#index"
 
+  resources :drivers
   get "/drivers/index", to: "drivers#index"
 
   resources :passengers
-
   get "/passengers", to: "passengers#index", as: "passengers"
 
   get "passengers/new", to: "passengers#new", as: "new_passenger"
