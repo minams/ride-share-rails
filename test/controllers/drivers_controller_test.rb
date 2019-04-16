@@ -7,19 +7,22 @@ describe DriversController do
   end
 
   describe "show" do
-    # Your tests go here
+    get drivers_show_url
+    must_respond_with :success
   end
 
   describe "edit" do
-    # Your tests go here
+    get drivers_edit_url
+    must_respond_with :success
   end
 
   describe "update" do
-    # Your tests go here
+    get drivers_update_url
+    must_respond_with :success
   end
 
   describe "new" do
-    # Your tests go here
+    get dr
   end
 
   describe "create" do
