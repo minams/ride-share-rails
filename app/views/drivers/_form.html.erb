@@ -1,0 +1,17 @@
+<% if @driver.errors.any? %>
+    <ul>
+      <% @driver.errors.each do |type, message| %>
+        <li>
+          <%= type %> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @driver do |field| %>
+    <%= field.label :name %>
+    <%= field.text_field :name %>
+    <%= field.label :vin %>
+    <%= field.text_field :vin %>
+    <%= field.submit %>
+<% end %>

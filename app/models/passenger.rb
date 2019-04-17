@@ -1,14 +1,12 @@
 class Passenger < ApplicationRecord
-  has_many :trips
+  has_many :trips, dependent: :destroy
+  validates :name, :phone_num, presence: true
 
-  validates :name, presence: true
-  validates :phone_num, presence: true
-
-  def total_charges
-    sum = 0
-    self.trips.each do |trip|
-      sum += trip.cost
+  def trip_cost
+    cost = 0
+    trips.each do |trip|
+      cost += trip.cost
     end
-    return "%.2f" % (sum * 0.01)
+    return cost
   end
 end
