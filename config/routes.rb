@@ -31,4 +31,22 @@ Rails.application.routes.draw do
   post "/drivers", to: "drivers#create"
 
   delete "/drivers/destroy/:id", to: "drivers#destroy", as: "delete_driver"
+
+  get "/trips", to: "trips#index"
+
+  get "/trips/new", to: "trips#new", as: "new_trip"
+
+  get "/trips/:id/edit", to: "trips#edit", as: "edit_trip"
+
+  get "/trips/:id/edit_rating", to: "trips#edit_rating", as: "edit_rating"
+
+  get "/trips/:id", to: "trips#show", as: "trip"
+
+  patch "/trips/:id/update_rating", to: "trips#update_rating"
+
+  patch "/trips/:id", to: "trips#update"
+
+  post "/trips", to: "trips#create", as: "create_trip"
+
+  delete "/trips/destroy/:id", to: "trips#destroy", as: "delete_trip"
 end
