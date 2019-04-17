@@ -161,7 +161,7 @@ describe PassengersController do
   end
 
   describe "create" do
-    it "will save a new book and redirect if given valid inputs" do
+    it "will save a new passenger and redirect if given valid inputs" do
       input_name = "Mina Shin"
       input_phone_num = "Sandi Metz"
       test_input = {
@@ -176,7 +176,7 @@ describe PassengersController do
         post passengers_path, params: test_input
       }.must_change "Passenger.count", 1
 
-      new_book = Passenger.find_by(name: input_name)
+      new_passenger = Passenger.find_by(name: input_name)
       expect(new_passenger).wont_be_nil
       expect(new_passenger.name).must_equal input_name
       expect(new_passenger.passenger.name).must_equal input_name
@@ -205,7 +205,7 @@ describe PassengersController do
   end
 
   describe "destroy" do
-    it "returns a 404 if the book is not found" do
+    it "returns a 404 if the passenger is not found" do
       invalid_id = "NOT A VALID ID"
 
       expect {
@@ -215,7 +215,7 @@ describe PassengersController do
     end
   end
 
-  it "can delete a book" do
+  it "can delete a passenger" do
     new_passenger = Passenger.create(name: "Mina Shin", passenger_id: Passenger.create(name: "Mina Shin").id, phone_num: "2061234567")
 
     expect {
