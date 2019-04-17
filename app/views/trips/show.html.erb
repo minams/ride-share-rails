@@ -1,23 +1,25 @@
 <h1>Trip Details</h1>
-<%= link_to("Edit Trip", trip_path(@trip.id), method: :edit  %>
-<%= link_to("Delete Trip", trip_path(@trip.id), method: :delete, data: {confirm: "100% for sure for sure"}) %>
+<%= link_to("Edit Trip", trip_path(@trip.id), method: :edit )  %>
+<%= link_to("Delete Trip", trip_path(@trip.id), 
+    method: :delete, 
+    data: {confirm: "100% for sure for sure"}) %>
 
 <ul>
     <li>
-      Trip ID <%= @trip.id %>
+      <h4>Trip ID</h4> <%= @trip.id %>
     </li>
     <li>
-      Date <%= @trip.date %>
+      <h4>Date</h4> <%= @trip.date %>
     </li>
     <li>
-      Cost $<%= @trip.cost/100 %>
+      <h4>Cost $</h4><%= @trip.cost/100 %>
     </li>
     <li>
-      Rating
+      <h4>Rating</h4>
       <% if @trip.rating %>
         <%= @trip.rating %>
       <% else %>
-        <%= form_for @trip do |field| %>
+        <% form_for @trip do |field| %>
           <%= field.label :rating %>
           <%= field.select :rating, options_for_select([1,2,3,4,5]) %>
           <%= field.submit "Update Rating"%>
@@ -25,11 +27,11 @@
       <% end %>
     </li>
     <li>
-      Passenger Name
+      <h4>Passenger Name</h4>
       <%= link_to(@trip.passenger.name, passenger_path(@trip.passenger.id)) %>
     </li>
     <li>
-      Driver Name
+      <h4>Driver Name</h4>
       <%= link_to(@trip.driver.name, driver_path(@trip.driver.id)) %>
     </li>
   </ul>
