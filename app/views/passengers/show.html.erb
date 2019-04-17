@@ -1,14 +1,17 @@
-<h2>
-  <%= @passenger.name %>
-</h2>
+<div class = "header">
 
+</div>
+<div class = "passenger_pic">
+<%= image_tag "passengerpic.jpg", alt: "Image of Icybat" %>
+</div>
+<div class = "header">
 <h3>
-  <%= @passenger.name %>
+  <%= "Name: #{@passenger.name}" %>
+  <%= "Phone Number: #{@passenger.phone_num}" %>
+  <%# <%= "Total Charges: #{@passenger.total_charges}" %>
+
+  <%= "Passenger Trips" %>
 </h3>
+</div>
+<%= link_to "Back to All Passengers", passengers_path %>
 
-<%# <%= link_to "Back to All Books", books_path %>
-
-<%= link_to "Edit", edit_passenger_path(@passenger.id) %>
-
-<%= link_to "Delete", 
-    passenger_path(@passenger.id), method: :delete %>
