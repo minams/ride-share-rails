@@ -22,14 +22,17 @@ describe DriversController do
   end
 
   describe "new" do
-    get dr
+    get drivers_new_url
+    must_respond_with :success
   end
 
   describe "create" do
-    # Your tests go here
+    get drivers_create_url
+    must_respond_with :success
   end
 
   describe "destroy" do
-    # Your tests go here
+    get drivers_destroy_url
+    must_respond_with :success
   end
 end
