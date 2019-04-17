@@ -1,0 +1,39 @@
+<h2><%= @driver.name %></h2>
+<h3><%= @driver.vin %></h3>
+
+<div><%= link_to("Edit Driver", edit_driver_path(@driver.id)) %></div>
+<div><%= link_to("Delete Driver", delete_driver_path(@driver.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+    
+
+<h3>Total Earnings: </h3>$<%= (@driver.money_earned/100).round(2) %>
+<h3>Average Rating: </h3><%= @driver.average_rating %>
+
+<%if @driver.trips.empty?%>
+    <p> This driver has no trips.</p>
+<%else%>
+    <h2>Trip History:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Driver ID</th>
+          <th>Driver Name</th>
+          <th>Date</th>
+          <th>Cost</th>
+          <th>Passenger Name</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @driver.trips.each do |trip| %>
+         <tr>
+            <td> <%=link_to(trip.id, trip_path(trip.id))%></td>
+            <td> <%= trip.driver.name%></td>
+            <td> <%= trip.date %></td>
+            <td> <%= format("%.2f", trip.cost/100)%></td>
+            <td> <%= trip.passenger.name  %></td>
+            <td> <%= trip.rating %></td>
+          </tr>
+        <% end %>
+       </tbody>
+    </table>
+<% end %>
