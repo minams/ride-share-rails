@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>RideShare!</h1>
+      <section>
+        <%= link_to "Driver",
+            new_driver_path  %>
+        <%= link_to "Passenger",
+            new_passenger_path  %>
+      </section>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= link_to "Back to Homepage", homepages_path%>
+    </footer>
   </body>
 </html>

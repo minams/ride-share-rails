@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # get "/drivers/index", to: "drivers#index"
 
   resources :passengers
+
+  resources :homepages
   # get "/passengers", to: "passengers#index", as: "passengers"
 
   # get "passengers/new", to: "passengers#new", as: "new_passenger"

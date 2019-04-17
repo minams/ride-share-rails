@@ -8,8 +8,16 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: passenger_id)
 
     if @passenger.nil?
-      head :not_found
+      head :not_found # refactor to render
     end
+  end
+
+  def total_charges
+    total_cost = 0
+    self.trips.each do |trip|
+      total_cost += trip.cost
+    end
+    return total_cost
   end
 
   def new
@@ -30,18 +38,21 @@ class PassengersController < ApplicationController
 
   def edit
     @passenger = Passenger.find_by(id: params[:id])
+
+    if @passenger.nil?
+      head :not_found
+    end
   end
 
   def update
-    passenger = Passenger.find_by(id: params[:id])
+    @passenger = Passenger.find_by(id: params[:id])
 
-    is_successful = passenger.update(passenger_params)
+    is_successful = @passenger.update(passenger_params)
 
     if is_successful
-      redirect_to book_path(passenger.id)
+      redirect_to passenger_path(@passenger.id)
     else
-      @passenger = passenger
-      render :edit, status: :bad_request
+      head :not_found
     end
   end
 

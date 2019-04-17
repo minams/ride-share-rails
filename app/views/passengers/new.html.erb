@@ -13,7 +13,7 @@
 
 <%= form_with model: @passenger, class: 'create-passenger' do |f| %>
 
-  <p> Edit Passenger </p>
+  <p> Add New Passenger </p>
 
   <%= f.label :name %>
   <%= f.text_field :name%>
@@ -23,7 +23,3 @@
   <%= f.submit "Save Passenger", class: "passenger-form__submit-btn" %>
 
 <% end %>
-
-<div class = "link">
-  <%= link_to "Back to All Passengers", passengers_path%>
-<div>
