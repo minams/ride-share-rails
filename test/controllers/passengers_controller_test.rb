@@ -2,30 +2,37 @@ require "test_helper"
 
 describe PassengersController do
   describe "index" do
-    # Your tests go here
+    get passengers_index_url
+    must_respond_with :success
   end
 
   describe "show" do
-    # Your tests go here
+    get passengers_show_url
+    must_respond_with :success
   end
 
   describe "edit" do
-    # Your tests go here
+    get passengers_edit_url
+    must_respond_with :success
   end
 
   describe "update" do
-    # Your tests go here
+    get passengers_update_url
+    must_respond_with :success
   end
 
   describe "new" do
-    # Your tests go here
+    get passengers_new_url
+    must_respond_with :success
   end
 
   describe "create" do
-    # Your tests go here
+    get passengers_create_url
+    must_respond_with :success
   end
 
   describe "destroy" do
-    # Your tests go here
+    get passengers_destroy_url
+    must_respond_with :success
   end
 end
