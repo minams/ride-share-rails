@@ -1,0 +1,23 @@
+ <h1>Edit the Trip Info:</h1>
+
+<% if @trip.errors.any? %>
+    <ul>
+      <% @trip.errors.each do |column, message| %>
+        <li>
+          <%= column.capitalize %> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= form_for @trip do |field| %>
+    <%= field.label "Passenger" %>
+    <%= field.select :passenger_id, options_from_collection_for_select(Passenger.all, "id", "name", :selected => @trip.passenger.id) %>
+    <%= field.label :date %>
+    <%= field.date_field :date, :selected => @trip.date %>
+    <%= field.label "Driver:" %>
+    <%= field.select :driver_id, options_from_collection_for_select(Driver.all, "id", "name", :selected => @trip.driver.id) %>
+    <%= field.label "Trip Rating:" %>
+    <%= field.select :rating, options_for_select([1,2,3,4,5], :selected => @trip.rating) %>
+    <%= field.submit "Save"%>
+<% end %>
