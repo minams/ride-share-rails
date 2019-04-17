@@ -58,7 +58,7 @@ describe PassengersController do
     }
 
     it "can update an existing passenger" do
-      original_passenger = Passenger.create(
+      original_passenger = Passenger.create!(
         name: "new passenger",
         phone_num: "2061234567",
       )
