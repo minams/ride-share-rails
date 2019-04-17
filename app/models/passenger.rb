@@ -4,7 +4,7 @@ class Passenger < ApplicationRecord
 
   def trip_cost
     cost = 0
-    trips.each do |trip|
+    self.trips.each do |trip|
       cost += trip.cost
     end
     return cost
