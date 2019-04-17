@@ -1,0 +1,37 @@
+<h1>Passengers</h1>
+<h2><%= @passenger.name %></h2>
+<h3><%= @passenger.phone_num %></h3>
+
+<%= link_to("Edit Passenger", edit_passenger_path(@passenger.id)) %></div>
+<%= link_to("Delete Passenger", delete_passenger_path(@passenger.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+<%= link_to("Add Trip", create_trip_path(:passenger => @passenger), method: :post) %>
+  
+<h3>Total Spent on Trips: $<%= (@passenger.trip_cost)/100 %></h3>
+   
+<%if @passenger.trips.empty?%>
+    <p> This person has not yet taken any rides.</p>
+<%else%>
+   <h2>Trips Taken</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Trip ID</th>
+            <th>Date</th>
+            <th>Cost</th>
+            <th>Driver Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @passenger.trips.each do |trip| %>
+            <tr>
+            <td><%= link_to(trip.id, trip_path(trip.id)) %></td>
+            <td> <%= trip.date %></td>
+            <td> <%= format("%.2f", trip.cost/100) %></td>
+            <td> <%= trip.driver.name  %> </td>
+            <td> <%= trip.rating %></td>
+          </tr>
+            <% end %>
+        </tbody>
+      </table>
+<% end %>
