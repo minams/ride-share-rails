@@ -38,16 +38,12 @@ class PassengersController < ApplicationController
   end
 
   def update
-    passenger = Passenger.find_by(id: params[:id])
+    @passenger = Passenger.find_by(id: params[:id])
 
-    if passenger.nil?
-      head :not_found
+    if @passenger.update_attributes(passenger_params)
+      redirect_to driver_path(@passenger.id)
     else
-      is_successful = passenger.update(passenger_params)
-    end
-
-    if is_successful
-      redirect_to passenger_path(passenger.id)
+      render :edit
     end
   end
 

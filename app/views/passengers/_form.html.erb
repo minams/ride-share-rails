@@ -1,26 +1,19 @@
 <% if @passenger.errors.any? %>
-  <ul class="errors">
-    <% @passenger.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @passenger.errors.each do |type, message| %>
+        <li>
+          <%= type %> <%= message %>
+        </li>
+      <% end %>
+    </ul>
 <% end %>
 
- <!-- > need to refactor with partial form
- --> 
-
-<%= form_with model: @passenger, class: 'create-passenger' do |f| %>
-
-  <p><%= intro_text %></p>
-
-  <%= f.label :name %>
-  <%= f.text_field :name%>
-  <%= f.label :phone_num %>
-  <%= f.text_field :phone_num %>
-
-  <%= f.submit "Save Passenger", class: "passenger-form__submit-btn" %>
+<%= form_for @passenger do |field| %>
+    <%= field.label :name %>
+    <%= field.text_field :name %>
+    <%= field.label :phone_num %>
+    <%= field.text_field :phone_num %>
+    <%= field.submit %>
 
 <% end %>
 
