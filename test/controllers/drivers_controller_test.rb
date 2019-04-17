@@ -2,7 +2,7 @@ require "test_helper"
 
 describe DriversController do
   it "can get index" do
-    get drivers_index_url
+    get drivers_path
     must_respond_with :success
   end
 

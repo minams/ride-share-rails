@@ -4,23 +4,14 @@
 <div class = "passenger_pic">
 <%= image_tag "passengerpic.jpg", alt: "Image of Icybat" %>
 </div>
-<div class = "header">
-<h3>
-  <%= "Name: #{@passenger.name}" %>
-  <%= "Phone Number: #{@passenger.phone_num}" %>
-  <%= "Passenger Trips" %>
-  <%= "Total Charges: #{@passenger.total_charges}" %>
-</h3>
-</div>
-<%= link_to "Back to All Passengers", passengers_path %>
 
 <h1>Passengers</h1>
 <h2><%= @passenger.name %></h2>
 <h3><%= @passenger.phone_num %></h3>
 
 <%= link_to("Edit Passenger", edit_passenger_path(@passenger.id)) %></div>
-<%= link_to("Delete Passenger", delete_passenger_path(@passenger.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
-<%= link_to("Add Trip", create_trip_path(:passenger => @passenger), method: :post) %>
+<%= link_to("Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+<%= link_to("Add Trip", trip_path(:passenger => @passenger), method: :post) %>
   
 <h3>Total Spent on Trips: $<%= (@passenger.trip_cost)/100 %></h3>
    
@@ -51,3 +42,5 @@
         </tbody>
       </table>
 <% end %>
+
+<%= link_to "Back to All Passengers", passengers_path %>

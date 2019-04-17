@@ -12,14 +12,6 @@ class PassengersController < ApplicationController
     end
   end
 
-  def total_charges
-    total_cost = 0
-    self.trips.each do |trip|
-      total_cost += trip.cost
-    end
-    return total_cost
-  end
-
   def new
     @passenger = Passenger.new
   end
