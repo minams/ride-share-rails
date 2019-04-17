@@ -10,6 +10,23 @@
   </head>
 
   <body>
+      <h2><%= link_to("RideShareRails", home_path, alt:'homepage')%></h2>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to("Passengers |", passengers_path) %>
+          </li>
+          <li>
+            <%= link_to("Add Passenger |", new_passenger_path) %>
+          </li>
+          <li>
+            <%= link_to("Drivers |", drivers_path)  %>
+          </li>
+          <li>
+            <%= link_to("Add Driver ", new_driver_path) %>
+          </li>
+        </ul>
+      </nav>
     <%= yield %>
   </body>
 </html>
