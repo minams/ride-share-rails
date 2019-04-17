@@ -2,7 +2,7 @@
 <h3><%= @driver.vin %></h3>
 
 <div><%= link_to("Edit Driver", edit_driver_path(@driver.id)) %></div>
-<div><%= link_to("Delete Driver", delete_driver_path(@driver.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+<div><%= link_to("Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
     
 
 <h3>Total Earnings: </h3>$<%= (@driver.money_earned/100).round(2) %>
