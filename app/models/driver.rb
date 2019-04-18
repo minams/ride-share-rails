@@ -17,6 +17,10 @@ class Driver < ApplicationRecord
     rating = 0
     no_rating = 0
 
+    if self.trips.length == 0
+      return 0.0
+    end
+
     trips.each do |trip|
       if trip.rating == nil
         no_rating += 1

@@ -33,7 +33,6 @@ describe PassengersController do
   end
 
   describe "edit" do
-    # not passing. issue with parameter
     it "can get the edit page for an existing passenger" do
       get edit_passenger_path(passenger.id)
 

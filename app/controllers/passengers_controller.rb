@@ -4,8 +4,7 @@ class PassengersController < ApplicationController
   end
 
   def show
-    passenger_id = params[:id]
-    @passenger = Passenger.find_by(id: passenger_id)
+    @passenger = Passenger.find_by(id: params[:id])
 
     if @passenger.nil?
       head :not_found
