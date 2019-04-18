@@ -11,23 +11,34 @@
 
   <body>
     <header>
-      <h1>RideShare!</h1>
-      <section>
-        <%= link_to "Drivers", 
-            drivers_path  %>
-        <%= link_to "Driver",
-            new_driver_path  %>
-        <%= link_to "Passengers", 
-            passengers_path %>
-        <%= link_to "Passenger",
-            new_passenger_path  %>
-      </section>
+      <h1>Raise the Roof RideShare!</h1>
+      <header>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "All Drivers", 
+            drivers_path,  class: "nav_links" %>
+          </li>
+          <li>
+            <%= link_to "Add Driver",
+            new_driver_path,  class: "nav_links"  %>
+          </li>
+          <li>
+            <%= link_to "All Passengers", 
+            passengers_path,  class: "nav_links" %>
+          </li>
+          <li>  
+          <%= link_to "Add Passenger",
+            new_passenger_path,  class: "nav_links"  %>
+          </li>
+        </ul>
+      </nav>
     </header>
     <main>
       <%= yield %>
     </main>
     <footer>
-      <%= link_to "Back to Homepage", root_path %>
+    <%= link_to "Home", root_path %>
     </footer>
   </body>
 </html>
