@@ -8,7 +8,7 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find_by(id: passenger_id)
 
     if @passenger.nil?
-      head :not_found # refactor to render
+      head :not_found
     end
   end
 
@@ -39,11 +39,14 @@ class PassengersController < ApplicationController
 
   def update
     @passenger = Passenger.find_by(id: params[:id])
-
-    if @passenger.update_attributes(passenger_params)
-      redirect_to driver_path(@passenger.id)
+    if !@passenger
+      head :not_found
     else
-      render :edit
+      if @passenger.update(passenger_params)
+        redirect_to passenger_path(@passenger.id)
+      else
+        render :edit, status: :not_found
+      end
     end
   end
 
