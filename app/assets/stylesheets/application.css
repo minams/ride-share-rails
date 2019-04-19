@@ -1,5 +1,5 @@
 html { 
-    background-image: url('https://www.flickr.com/photos/171032723@N02/47646313311/in/dateposted-public/');
+    background-image: url('https://lh3.googleusercontent.com/jT8q9oo_1y4XiPAFFO31Cif6ILDFlvmlUX7kOgOnEtf5ITDh6e37HtKszvTO73qI6-rbTcV5Vq3H1tEFW3C5Q-D4NnOFUkGMpVmZvjX3o6ewl_-fHygylQUC_giTgQD3ZkeSJhA7Wg=w2400');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -15,14 +15,11 @@ body {
     font-family: 'Arvo', serif;
 }
 
-div {
+.background_color {
+    background-color: rgba(44, 144, 151, 0.7);
     display: grid;
     grid-template:auto 1fr auto / repeat(4, 25%);
     min-height: 75vh;
-}
-
-.background_color {
-    background-color: rgba(44, 144, 151, 0.7);
 }
 
 h1, h2, h3 {
