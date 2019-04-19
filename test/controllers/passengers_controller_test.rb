@@ -20,16 +20,16 @@ describe PassengersController do
 
       must_respond_with :success
     end
+  end
 
-    it "should give a 404 instead of showing a non-existant invalid passenger" do
-      invalid_passenger_id = 999
+  it "should give a 404 instead of showing a non-existant invalid passenger" do
+    invalid_passenger_id = 999
 
-      expect {
-        get passenger_path(invalid_passenger_id)
-      }.wont_change "Passenger.count"
+    expect {
+      get passenger_path(invalid_passenger_id)
+    }.wont_change "Passenger.count"
 
-      must_respond_with :not_found
-    end
+    must_respond_with :not_found
   end
 
   describe "edit" do
@@ -55,13 +55,11 @@ describe PassengersController do
         phone_num: "2061234567",
       },
     }
-
     it "can update an existing passenger" do
       original_passenger = Passenger.create!(
         name: "new passenger",
         phone_num: "2061234567",
       )
-
       expect {
         patch passenger_path(original_passenger.id), params: new_hash
       }.wont_change "Passenger.count"
@@ -108,23 +106,23 @@ describe PassengersController do
 
       must_respond_with :redirect
     end
+  end
 
-    it "will return a 400 with an invalid passenger" do
-      input_name = ""
-      input_phone_num = "2061234567"
-      test_input = {
-        "passenger": {
-          name: input_name,
-          phone_num: input_phone_num,
-        },
-      }
+  it "will return a 400 with an invalid passenger" do
+    input_name = ""
+    input_phone_num = "2061234567"
+    test_input = {
+      "passenger": {
+        name: input_name,
+        phone_num: input_phone_num,
+      },
+    }
 
-      expect {
-        post passengers_path, params: test_input
-      }.wont_change "Passenger.count"
+    expect {
+      post passengers_path, params: test_input
+    }.wont_change "Passenger.count"
 
-      must_respond_with :bad_request
-    end
+    must_respond_with :bad_request
   end
 
   describe "destroy" do
@@ -147,11 +145,5 @@ describe PassengersController do
 
     must_respond_with :redirect
     must_redirect_to passengers_path
-  end
-
-  describe "change availability" do
-    it "can change the availability" do
-      expect { passenger.availability }.must_be "unavailable"
-    end
   end
 end
