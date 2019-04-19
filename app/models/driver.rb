@@ -4,13 +4,15 @@ class Driver < ApplicationRecord
   validates :name, :vin, presence: true
 
   def money_earned
-    money = 0
+    total_money = 0
 
-    trips.each do |trip|
-      money += trip.cost
+    if (trips.length > 0)
+      trips.each do |trip|
+        total_money += (trip.cost - 1.65) * 0.80
+      end
     end
-    total_money = (0.85 * money)
-    return total_money
+
+    total_money > 0 ? total_money : 0
   end
 
   def average_rating
