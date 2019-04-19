@@ -61,7 +61,6 @@
 #         name: "new driver",
 #         vin: "2061234567",
 #       )
-
 #       expect {
 #         patch driver_path(original_driver.id), params: new_hash
 #       }.wont_change "Driver.count"
@@ -84,29 +83,6 @@
 #       get new_driver_path
 
 #       must_respond_with :success
-#     end
-#   end
-
-#   describe "create" do
-#     it "will save a new driver and redirect if given valid inputs" do
-#       input_name = "Laneia Murray"
-#       test_input = {
-#         "driver": {
-#           name: input_name,
-#           vin: "2061234567",
-#         },
-#       }
-
-#       expect {
-#         post drivers_path, params: test_input
-#       }.must_change "Driver.count", 1
-
-#       new_driver = Driver.find_by(name: input_name)
-#       expect(new_driver).wont_be_nil
-#       expect(new_driver.name).must_equal input_name
-#       expect(new_driver.vin).must_equal "2061234567"
-
-#       must_respond_with :redirect
 #     end
 
 #     it "will return a 400 with an invalid driver" do
