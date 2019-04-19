@@ -61,6 +61,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "aws-sdk-s3", require: false
+
 gem 'jquery-turbolinks'
 gem 'jquery-rails'
 group :development, :test do
@@ -79,6 +81,3 @@ group :test do
   gem 'minitest-reporters'
   gem 'minitest-skip'
 end
-
-
-gem "aws-sdk-s3", require: false
