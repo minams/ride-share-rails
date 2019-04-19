@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   delete "trips/:id", to: "trips#destroy"
 
   resources :passengers do
-    resources :trips, only: [:index, :new]
+    resources :trips, only: [:new]
   end
+
+  get "/passengers/:passenger_id/trips", to: "trips#new", as: "passenger_trips"
+  patch "/passengers/:passenger_id/trips", to: "trips#new"
 end
