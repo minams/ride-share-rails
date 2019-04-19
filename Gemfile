@@ -79,3 +79,6 @@ group :test do
   gem 'minitest-reporters'
   gem 'minitest-skip'
 end
+
+
+gem "aws-sdk-s3", require: false
