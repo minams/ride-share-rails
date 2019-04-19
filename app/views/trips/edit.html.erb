@@ -21,3 +21,7 @@
     <%= field.select :rating, options_for_select([1,2,3,4,5], :selected => @trip.rating) %>
     <%= field.submit "Save"%>
 <% end %>
+
+<footer>
+    <%= link_to "Home", root_path, class: "links" %>
+</footer>

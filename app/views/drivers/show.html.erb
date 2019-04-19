@@ -1,18 +1,21 @@
-<h2><%= @driver.name %></h2>
-<h3><%= @driver.vin %></h3>
+<%= image_tag "driverpic.jpg", alt: "Image of Icybat" %>
 
-<div><%= link_to("Edit Driver", edit_driver_path(@driver.id)) %></div>
-<div><%= link_to("Delete Driver", driver_path(@driver.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+<h2><%= @driver.name %></h2>
+<h3>VIN: <%=@driver.vin %></h3>
+
+<%= link_to("Edit Driver  |", edit_driver_path(@driver.id), class: "links") %>
+<%= link_to(" Delete Driver", driver_path(@driver.id), class: "links", method: :delete, data: {confirm: "100% for sure for sure delete?"})%>
     
 
 <h3>Total Earnings: </h3>$<%= (@driver.money_earned/100).round(2) %>
 <h3>Average Rating: </h3><%= @driver.average_rating %>
 
+
 <%if @driver.trips.empty?%>
     <p> This driver has no trips.</p>
 <%else%>
-    <h2>Trip History:</h2>
-    <table>
+    <h2>Trip History</h2>
+    <table >
       <thead>
         <tr>
           <th>Driver ID</th>
@@ -26,7 +29,7 @@
       <tbody>
         <% @driver.trips.each do |trip| %>
          <tr>
-            <td> <%=link_to(trip.id, trip_path(trip.id))%></td>
+            <td> <%=link_to(trip.id, trip_path(trip.id), class: "links")%></td>
             <td> <%= trip.driver.name%></td>
             <td> <%= trip.date %></td>
             <td> <%= format("%.2f", trip.cost/100)%></td>
@@ -37,3 +40,7 @@
        </tbody>
     </table>
 <% end %>
+
+<footer class = "foot">
+    <%= link_to "Home", root_path, class: "links" %>
+</footer>

@@ -4,41 +4,38 @@
     <title>RideShareRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Arvo|Paytone+One','application' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class = "background_color">
     <header>
-      <h1>Raise the Roof RideShare!</h1>
-      <header>
       <nav>
         <ul>
           <li>
             <%= link_to "All Drivers", 
-            drivers_path,  class: "nav_links" %>
+            drivers_path,  class: "nav_links change_color" %>
           </li>
           <li>
             <%= link_to "Add Driver",
-            new_driver_path,  class: "nav_links"  %>
+            new_driver_path,  class: "nav_links change_color"  %>
           </li>
           <li>
             <%= link_to "All Passengers", 
-            passengers_path,  class: "nav_links" %>
+            passengers_path,  class: "nav_links change_color" %>
           </li>
           <li>  
           <%= link_to "Add Passenger",
-            new_passenger_path,  class: "nav_links"  %>
+            new_passenger_path,  class: "nav_links change_color"  %>
           </li>
         </ul>
       </nav>
     </header>
     <main>
+      <h1 class = "main_title">Raise the Roof RideShare!</h1>
       <%= yield %>
     </main>
-    <footer>
-    <%= link_to "Home", root_path %>
-    </footer>
   </body>
 </html>
