@@ -136,16 +136,16 @@ describe DriversController do
       }.wont_change "Driver.count"
       must_respond_with :not_found
     end
-  end
 
-  it "can delete a driver" do
-    new_driver = Driver.create(name: "Mina Shin", vin: "2061234567")
+    it "can delete a driver" do
+      new_driver = Driver.create(name: "Mina Shin", vin: "2061234567")
 
-    expect {
-      delete driver_path(new_driver.id)
-    }.must_change "Driver.count", -1
+      expect {
+        delete driver_path(new_driver.id)
+      }.must_change "Driver.count", -1
 
-    must_respond_with :redirect
-    must_redirect_to drivers_path
+      must_respond_with :redirect
+      must_redirect_to drivers_path
+    end
   end
 end
