@@ -60,6 +60,13 @@ class PassengersController < ApplicationController
     end
   end
 
+  def change_availability
+    passenger_id = params[:id]
+    passenger = Passenger.find_by(id: passenger_id)
+    passenger.update(availability: "unavailable")
+    redirect_to passengers_path
+  end
+
   private
 
   def passenger_params

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :drivers
 
-  resources :trips
+  get "/trips/:id", to: "trips#show", as: "trip"
+
+  get "/trips/:id/edit", to: "trips#edit", as: "edit_trip"
+  patch "/trips/:id", to: "trips#update"
+
+  delete "trips/:id", to: "trips#destroy"
 
   resources :passengers do
     resources :trips, only: [:index, :new]

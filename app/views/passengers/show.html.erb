@@ -11,7 +11,7 @@
 
 <%= link_to("Edit Passenger", edit_passenger_path(@passenger.id)) %></div>
 <%= link_to("Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
-<%= link_to("Add Trip", trip_path(:passenger => @passenger), method: :post) %>
+<%= link_to("Add Trip", passenger_trip_path(:passenger => @passenger), method: :post) %>
   
 <h3>Total Spent on Trips: $<%= (@passenger.trip_cost)/100 %></h3>
    
