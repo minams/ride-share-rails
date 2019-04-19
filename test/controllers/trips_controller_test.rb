@@ -1,84 +1,61 @@
-# require "test_helper"
+require "test_helper"
 
-# describe TripsController do
-#   let (:trip) do
-#     Trip.create(passenger_id: "passenger_id", date: "04/18/19", rating: "4", driver_id: "driver_id")
-#   end
+describe TripsController do
+  let (:driver) do
+    Driver.where(status: "available").sample
+  end
 
-#   describe "index" do
-#     it "must have a successful path" do
-#       get trips_path
-#       must_respond_with :success
-#     end
-#   end
+  let (:trip) do
+    Trip.create(passenger: Passenger.first, date: Date.today, rating: 4, driver: driver, cost: 1000)
+  end
 
-#   describe "show" do
-#     it "successfully shows a valid trip" do
-#       valid_trip_id = trip.id
+  describe "show" do
+    it "successfully shows a valid trip" do
+      valid_trip_id = trip.id
 
-#       get trip_path(valid_trip_id)
+      get trip_path(valid_trip_id)
 
-#       must_respond_with :success
-#     end
+      must_respond_with :success
+    end
+  end
 
-#     it "should give a 404 instead of showing a non-existant invalid trip" do
-#       invalid_trip_id = 999
+  describe "edit" do
+    it "can get the edit page for an existing trip" do
+      get edit_trip_path(trip.id)
 
-#       expect {
-#         get trip_path(invalid_trip_id)
-#       }.wont_change "Trip.count"
+      must_respond_with :success
+    end
+  end
 
-#       must_respond_with :not_found
-#     end
-#   end
+  describe "update" do
+    new_hash = {
+      trip: {
+        passenger: Passenger.first,
+        date: Date.today,
+        rating: 2,
+        driver: Driver.first,
+        cost: 1000,
+      },
+    }
+    it "can update an existing trip" do
+      id = trip.id
+      expect {
+        patch trip_path(id), params: new_hash
+      }.wont_change "Trip.count"
 
-#   describe "edit" do
-#     it "can get the edit page for an existing trip" do
-#       get edit_trip_path(trip.id)
+      trip.reload
+      expect(trip.rating).must_equal 2
+    end
 
-#       must_respond_with :success
-#     end
+    it "will respond with not found if invalid id" do
+      expect {
+        patch trip_path(-1), params: new_hash
+      }.wont_change "Trip.count"
 
-#     it "will respond with bad request when attempting to edit a nonexistant trip" do
-#       expect {
-#         get edit_trip_path(-1)
-#       }.wont_change "trip.count"
-
-#       must_respond_with :not_found
-#     end
-#   end
-
-#   describe "update" do
-#     new_hash = {
-#       trip: {
-#         name: "new trip name",
-#         vin: "2061234567",
-#       },
-#     }
-
-#     it "can update an existing trip" do
-#       original_trip = trip.create!(
-#         name: "new trip",
-#         vin: "2061234567",
-#       )
-
-#       expect {
-#         patch trip_path(original_trip.id), params: new_hash
-#       }.wont_change "trip.count"
-
-#       original_trip.reload
-#       expect(original_trip.name).must_equal "new trip name"
-#     end
-
-#     it "will respond with not found if invalid id" do
-#       expect {
-#         patch trip_path(-1), params: new_hash
-#       }.wont_change "trip.count"
-
-#       must_respond_with :not_found
-#     end
-#   end
-
+      must_respond_with :not_found
+    end
+  end
+end
 #   describe "new" do
 #     it "can get the new trip page" do
 #       get new_trip_path
