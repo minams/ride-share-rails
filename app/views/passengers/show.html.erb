@@ -3,9 +3,15 @@
 <h2><%= @passenger.name %></h2>
 <h3><%= @passenger.phone_num %></h3>
 
+<<<<<<< HEAD
 <%= link_to("Edit Passenger |", edit_passenger_path(@passenger.id), class: "links") %>
 <%= link_to("Delete Passenger |", passenger_path(@passenger.id), class: "links", method: :delete, data: {confirm: "100% for sure for sure?"}) %>
 <%= link_to("Add Trip", trip_path(:passenger => @passenger), class: "links", method: :post) %>
+=======
+<%= link_to("Edit Passenger", edit_passenger_path(@passenger.id)) %></div>
+<%= link_to("Delete Passenger", passenger_path(@passenger.id), method: :delete, data: {confirm: "100% for sure for sure?"}) %></div>
+<%= link_to "Add Trip", passenger_trips_path(@passenger.id), method: :post %>
+>>>>>>> abdd8442fa92eba33915a0205a2603fa625e8c5d
   
 <h3>Total Spent on Trips: $<%= (@passenger.trip_cost)/100 %></h3>
    

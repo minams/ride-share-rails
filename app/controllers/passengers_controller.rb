@@ -4,11 +4,10 @@ class PassengersController < ApplicationController
   end
 
   def show
-    passenger_id = params[:id]
-    @passenger = Passenger.find_by(id: passenger_id)
+    @passenger = Passenger.find_by(id: params[:id])
 
     if @passenger.nil?
-      head :not_found # refactor to render
+      head :not_found
     end
   end
 
@@ -39,11 +38,14 @@ class PassengersController < ApplicationController
 
   def update
     @passenger = Passenger.find_by(id: params[:id])
-
-    if @passenger.update_attributes(passenger_params)
-      redirect_to driver_path(@passenger.id)
+    if !@passenger
+      head :not_found
     else
-      render :edit
+      if @passenger.update(passenger_params)
+        redirect_to passenger_path(@passenger.id)
+      else
+        render :edit, status: :not_found
+      end
     end
   end
 
@@ -56,6 +58,13 @@ class PassengersController < ApplicationController
       passenger.destroy
       redirect_to passengers_path
     end
+  end
+
+  def change_availability
+    passenger_id = params[:id]
+    passenger = Passenger.find_by(id: passenger_id)
+    passenger.update(availability: "unavailable")
+    redirect_to passengers_path
   end
 
   private

@@ -33,7 +33,6 @@ describe PassengersController do
   end
 
   describe "edit" do
-    # not passing. issue with parameter
     it "can get the edit page for an existing passenger" do
       get edit_passenger_path(passenger.id)
 
@@ -149,4 +148,10 @@ describe PassengersController do
     must_respond_with :redirect
     must_redirect_to passengers_path
   end
+
+  describe "change availability" do
+    it "can change the availability" do
+
+      expect { passenger.availability }.must_be "unavailable"
+    end
 end
