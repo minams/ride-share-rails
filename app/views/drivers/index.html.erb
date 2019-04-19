@@ -5,7 +5,7 @@
   <% @drivers.each do |driver| %>
   <li>
     <%= image_tag "driverpic.jpg", alt: "Image of Icybat" %>
-    <%= link_to(driver.name, driver_path(driver.id), class: "links", alt:'Driver show view')%>
+    <%= link_to("#{driver.name}: ", driver_path(driver.id), class: "links", alt:'Driver show view')%>
     <%= link_to "Edit |", edit_driver_path(driver.id), class: "links" %>
     <%= link_to " Delete", 
       driver_path(driver.id), class: "links", method: :delete, 
