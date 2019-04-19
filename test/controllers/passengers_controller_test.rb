@@ -151,7 +151,7 @@ describe PassengersController do
 
   describe "change availability" do
     it "can change the availability" do
-
       expect { passenger.availability }.must_be "unavailable"
     end
+  end
 end

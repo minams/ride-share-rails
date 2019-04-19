@@ -49,7 +49,7 @@ h1 {
       text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px hsl(344, 59%, 58%), 0 0 40px hsl(344, 59%, 58%), 0 0 50px hsl(344, 59%, 58%), 0 0 60px hsl(344, 59%, 58%), 0 0 70px hsl(344, 59%, 58%);
     }
     to {
-      text-shadow: 0 0 20px #fff, 0 0 30px #e67b74, 0 0 40px #e67b74, 0 0 50px #e67b74, 0 0 60px #e67b74, 0 0 70px ##e67b74, 0 0 80px ##e67b74;
+      text-shadow: 0 0 20px #fff, 0 0 30px #e67b74, 0 0 40px #e67b74, 0 0 50px #e67b74, 0 0 60px #e67b74, 0 0 70px #e67b74, 0 0 80px #e67b74;
     }
 }
 
