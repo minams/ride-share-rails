@@ -6,12 +6,17 @@
         </li>
       <% end %>
     </ul>
-<% end %>
-
+<% else %>
 <%= form_for @driver do |field| %>
     <%= field.label :name %>
     <%= field.text_field :name %>
     <%= field.label :vin %>
     <%= field.text_field :vin %>
     <%= field.submit %>
+  <% end %>
 <% end %>
+
+<footer class = "foot">
+  <%= link_to "Back to All Drivers |", drivers_path, class: "links"%>
+  <%= link_to "Home", root_path, class: "links" %>
+</footer>

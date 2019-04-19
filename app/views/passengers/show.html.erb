@@ -13,7 +13,7 @@
     <p> This person has not yet taken any rides.</p>
 <%else%>
    <h2>Trips Taken</h2>
-      <table>
+      <table class = "center_passenger">
         <thead>
           <tr>
             <th>Trip ID</th>
@@ -31,13 +31,11 @@
             <td> <%= format("%.2f", trip.cost/100) %></td>
             <td> <%= trip.driver.name  %> </td>
             <td> <%= trip.rating %></td>
-          </tr>
+            </tr>
             <% end %>
         </tbody>
       </table>
 <% end %>
-
-
 
 <footer>
   <%= link_to "Back to All Passengers |", passengers_path, class: "links" %>

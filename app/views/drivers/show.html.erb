@@ -15,7 +15,7 @@
     <p> This driver has no trips.</p>
 <%else%>
     <h2>Trip History</h2>
-    <table >
+    <table class = "center_driver">
       <thead>
         <tr>
           <th>Driver ID</th>
@@ -41,6 +41,7 @@
     </table>
 <% end %>
 
-<footer class = "foot">
-    <%= link_to "Home", root_path, class: "links" %>
+<footer>
+  <%= link_to "Back to All Drivers |", drivers_path, class: "links" %>
+  <%= link_to "Home", root_path, class: "links" %>
 </footer>
