@@ -89,7 +89,7 @@ describe DriversController do
 
   describe "create" do
     it "will save a new driver and redirect if given valid inputs" do
-      input_name = "Mina Shin"
+      input_name = "Laneia Murray"
       test_input = {
         "driver": {
           name: input_name,
