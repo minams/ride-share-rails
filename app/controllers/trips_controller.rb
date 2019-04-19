@@ -43,19 +43,23 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new
+    passenger = Passenger.find_by(id: params[:passenger_id])
 
-    passenger = Passenger.find_by(id: params[:passenger])
+    @trip = Trip.new(
+      passenger: passenger,
+      driver: Driver.where(status: "available").sample,
+      date: Date.today,
+      cost: rand(170..5000),
+    )
 
-    @trip.passenger = passenger
-    @trip.driver = Driver.all.sample
+    is_successful = @trip.save
 
-    @trip.date = Date.today.to_s
-
-    @trip.cost = 1000 #$10
-
-    if @trip.save
-      redirect_to passenger_path(params[:passenger])
+    if is_successful
+      @trip.driver.status = "unavailable"
+      @trip.driver.save
+      redirect_to passenger_path(@trip.passenger_id)
+    else
+      head :internal_server_error
     end
   end
 
@@ -68,6 +72,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    return params.require(:trip).permit(:passenger_id, :date, :rating, :driver_id)
+    return params.require(:trip).permit(:passenger_id, :date, :rating, :driver_id, :status)
   end
 end

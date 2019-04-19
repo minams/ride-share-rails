@@ -4,12 +4,12 @@ Rails.application.routes.draw do
 
   resources :drivers
 
-  resources :trips, except: [:index]
+  resources :trips, except: [:index, :create]
 
   resources :passengers do
-    resources :trips, only: [:new]
+    resources :trips, only: [:create]
   end
 
-  get "/passengers/:passenger_id/trips", to: "trips#new", as: "passenger_trips"
-  patch "/passengers/:passenger_id/trips", to: "trips#new"
+  # get "/passengers/:passenger_id/trips", to: "trips#new", as: "passenger_trips"
+  # patch "/passengers/:passenger_id/trips", to: "trips#new"
 end
