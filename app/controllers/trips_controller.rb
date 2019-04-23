@@ -22,10 +22,14 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find_by(id: params[:id])
-    if @trip.update_attributes(trip_params)
-      redirect_to passenger_path(@trip.passenger.id)
+    if !@trip
+      head :not_found
     else
-      render :edit
+      if @trip.update(trip_params)
+        redirect_to passenger_path(@trip.passenger.id)
+      else
+        render :edit, status: :not_found
+      end
     end
   end
 
